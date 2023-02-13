@@ -13,7 +13,7 @@ public class QuickStart {
     public static void main( String[] args ) {
 
         // Replace the placeholder with your MongoDB deployment's connection string
-        String uri = "mongodb+srv://admin0:admin0@ms-query-optimizer.fl6ba.mongodb.net";
+        String uri = "";
 
         try (MongoClient mongoClient = MongoClients.create(uri)) {
             MongoDatabase database = mongoClient.getDatabase("ms_test");
