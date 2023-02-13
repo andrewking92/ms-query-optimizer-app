@@ -19,7 +19,7 @@ public class QuickStart {
             MongoDatabase database = mongoClient.getDatabase("ms_test");
             MongoCollection<Document> collection = database.getCollection("party");
 
-            Document doc = collection.find(eq("partyID", "BC-85476514086256645514")).first();
+            Document doc = collection.find(eq("partyID", "BC-854765140862566414")).first();
             if (doc != null) {
                 System.out.println(doc.toJson());
             } else {
