@@ -9,7 +9,8 @@ import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 
-public class QuickStart {
+
+public class Find {
     public static void main( String[] args ) {
 
         // Replace the placeholder with your MongoDB deployment's connection string
