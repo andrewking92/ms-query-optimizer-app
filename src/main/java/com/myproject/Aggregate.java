@@ -3,6 +3,7 @@ package com.myproject;
 import static com.mongodb.client.model.Filters.eq;
 
 import org.bson.Document;
+import java.util.*;
 
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;
@@ -11,7 +12,7 @@ import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.model.Aggregates;
 
 
-public class QuickStart {
+public class Aggregate {
     public static void main( String[] args ) {
 
         // Replace the placeholder with your MongoDB deployment's connection string
