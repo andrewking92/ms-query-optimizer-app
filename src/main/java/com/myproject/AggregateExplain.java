@@ -10,7 +10,7 @@ import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.model.Aggregates;
-import com.mongodb.client.model.ExplainVerbosity;
+import com.mongodb.ExplainVerbosity;
 
 
 public class AggregateExplain {
@@ -26,8 +26,7 @@ public class AggregateExplain {
 
             Document explanation = collection.aggregate(
                 Arrays.asList(
-                        Aggregates.match(eq("partyID", "BC-854765140862566414")),
-                        Aggregates.group("$stars", Accumulators.sum("count", 1))
+                        Aggregates.match(eq("partyID", "BC-854765140862566414"))
                 )
             ).explain(ExplainVerbosity.EXECUTION_STATS);
             
