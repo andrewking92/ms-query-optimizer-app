@@ -10,6 +10,7 @@ import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.model.Aggregates;
+import com.mongodb.client.model.Projections;
 import com.mongodb.ExplainVerbosity;
 
 
@@ -26,17 +27,22 @@ public class AggregateExplain {
 
             Document explanation = collection.aggregate(
                 Arrays.asList(
-                        Aggregates.match(eq("partyID", "BC-854765140862566414"))
+                        Aggregates.match(eq("partyID", "BC-854765140862566414")),
+                        Aggregates.project(Projections.fields(Projections.excludeId()))
                 )
             ).explain(ExplainVerbosity.EXECUTION_STATS);
             
             List<Document> stages = explanation.get("stages", List.class);
             List<String> keys = Arrays.asList("queryPlanner", "winningPlan");
 
-            for (Document stage : stages) {
-                Document cursorStage = stage.get("$cursor", Document.class);
-                if (cursorStage != null) {
-                    System.out.println(cursorStage.getEmbedded(keys, Document.class).toJson());
+            if (stages == null) {
+                System.out.println("No stages here");
+            } else {
+                for (Document stage : stages) {
+                    Document cursorStage = stage.get("$cursor", Document.class);
+                    if (cursorStage != null) {
+                        System.out.println(cursorStage.getEmbedded(keys, Document.class).toJson());
+                    }
                 }
             }
         }
