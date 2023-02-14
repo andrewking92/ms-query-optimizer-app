@@ -12,7 +12,7 @@ import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.model.Aggregates;
 
 
-public class Aggregate {
+public class AggregateExplain {
     public static void main( String[] args ) {
 
         // Replace the placeholder with your MongoDB deployment's connection string
